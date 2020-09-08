@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Particle from '../Particles/Particles';
 
 import backgroundImg from '../../assets/space.jpg';
 
@@ -10,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
 		backgroundSize: 'cover',
 		backgroundPosition: 'top',
 		position: 'relative',
-		height: '100vh'
+		height: '100vh',
+		zIndex: -2
 	}
 }));
 
@@ -19,10 +21,13 @@ const LandingPage = () => {
 	const theme = useTheme();
 
 	return (
-		<Grid container className={classes.backgroundImage}>
-			<div></div>
-			<div></div>
-		</Grid>
+		<Fragment>
+			<Particle />
+			<Grid container className={classes.backgroundImage}>
+				<div></div>
+				<div></div>
+			</Grid>
+		</Fragment>
 	);
 };
 
