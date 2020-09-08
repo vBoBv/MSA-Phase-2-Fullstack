@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import WOW from 'wowjs';
+import Typed from 'react-typed';
 
 import logo from '../../assets/logo.png';
 
@@ -9,11 +10,17 @@ const useStyles = makeStyles((theme) => ({
 	navBarContainer: {
 		position: 'absolute',
 		color: '#FFFFFF',
-		paddingTop: '2rem'
+		paddingTop: '1.5rem',
+		fontFamily: 'Audiowide, cursive',
+		fontSize: '2rem',
+		paddingLeft: '2rem'
 	},
 	logo: {
-		width: '80px',
-		height: '80px'
+		width: '50px',
+		height: '50px'
+	},
+	logoItem: {
+		paddingLeft: '1rem'
 	}
 }));
 
@@ -27,15 +34,18 @@ const Header = () => {
 	const classes = useStyles();
 
 	return (
-		<Grid container justify='center' className={classes.navBarContainer}>
-			<Grid item>
+		<Grid container justify='flex-start' alignItems='center' className={classes.navBarContainer}>
+			<Grid item className={classes.logoItem}>
 				<img
-					className={`${classes.logo} wow flipInX`}
+					className={`${classes.logo} wow rollIn rotatingAnimation`}
 					src={logo}
 					alt='Logo'
-					data-wow-duration='infinite'
-					data-wow-delay='.5s'
+					data-wow-duration='2s'
+					data-wow-delay='1.5s'
 				/>
+			</Grid>
+			<Grid item className={classes.logoItem}>
+				<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
 			</Grid>
 		</Grid>
 	);
