@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 	}
 }));
 
-export default function CustomizedTabs() {
+const NavigationTabs = () => {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 
@@ -66,7 +66,7 @@ export default function CustomizedTabs() {
 			<div className={classes.tabsContainer}>
 				<StyledTabs value={value} onChange={handleChange} aria-label='styled tabs example'>
 					<StyledTab label='Home' />
-					<StyledTab label='UFO' />
+					<StyledTab label='I/UFO' />
 					<StyledTab label='Auction' />
 					<StyledTab label='Join us' />
 				</StyledTabs>
@@ -74,4 +74,6 @@ export default function CustomizedTabs() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default NavigationTabs;
