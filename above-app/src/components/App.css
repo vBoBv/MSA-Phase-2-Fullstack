@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #8a8a8a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(20, 20, 20);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(20, 20, 20);
+}
