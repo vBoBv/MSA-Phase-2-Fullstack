@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { IItem } from '../../common/Interfaces';
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? 'https://localhost:44301/api/' : 'hostedWeb';
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? 'https://localhost:44379/api/' : 'hostedWeb';
 
 const response = (response: AxiosResponse) => response.data;
 
