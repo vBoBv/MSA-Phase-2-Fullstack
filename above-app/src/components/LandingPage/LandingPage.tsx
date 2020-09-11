@@ -49,6 +49,7 @@ const LandingPage = () => {
 					<Typed strings={['Browse - Buy - Auction--']} typeSpeed={60} startDelay={3500} showCursor={false} />
 				</Grid>
 			</Grid>
+			<Particle />
 		</Fragment>
 	);
 };
