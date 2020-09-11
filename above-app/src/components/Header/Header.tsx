@@ -11,23 +11,23 @@ const useStyles = makeStyles((theme) => ({
 	navBarContainer: {
 		position: 'absolute',
 		color: '#FFFFFF',
-		paddingTop: '1.5rem',
+		paddingTop: theme.spacing(4),
 		fontFamily: 'Audiowide, cursive',
 		fontSize: '2rem',
-		paddingLeft: '2rem',
 		zIndex: 1
 	},
 	logoContainer: {
 		display: 'flex',
 		justifyContent: 'center',
-		alignContent: 'center'
+		alignContent: 'center',
+		paddingLeft: theme.spacing(4)
 	},
 	logo: {
 		width: '50px',
 		height: '50px'
 	},
 	logoItem: {
-		paddingLeft: '1rem'
+		paddingLeft: theme.spacing(1)
 	}
 }));
 
