@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	tabsContainer: {
@@ -24,14 +22,14 @@ const NavigationTabs = () => {
 	return (
 		<Grid container justify='space-evenly' className={classes.tabsContainer}>
 			<Grid item className={classes.tab}>
-				<NavLink to='/' className={classes.link}>
+				<Link to='/' className={classes.link}>
 					Home
-				</NavLink>
+				</Link>
 			</Grid>
 			<Grid item className={classes.tab}>
-				<NavLink to='/items' className={classes.link}>
+				<Link to='/acquiredobjects' className={classes.link}>
 					I/UFO
-				</NavLink>
+				</Link>
 			</Grid>
 			<Grid item className={classes.tab}>
 				Auction
