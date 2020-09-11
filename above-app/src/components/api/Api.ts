@@ -13,7 +13,7 @@ const requests = {
 };
 
 const Items = {
-	list: () => requests.get('/items'),
+	list: (): Promise<IItem[]> => requests.get('/items'),
 	details: (id: string) => requests.get(`/items/${id}`),
 	create: (item: IItem) => requests.post('items', item),
 	update: (item: IItem) => requests.patch(`items/${item.id}`, item),

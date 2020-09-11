@@ -7,6 +7,8 @@ import logo from '../../assets/logo.png';
 
 interface ICardGridProps {
 	spaceObjects: IItem[];
+	onDeleteSpaceObject: (id: string) => void;
+	// onSelectSpaceObject: (id: string) => void;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const CardGrid: React.FC<ICardGridProps> = ({ spaceObjects }) => {
+const CardGrid: React.FC<ICardGridProps> = ({ spaceObjects, onDeleteSpaceObject }) => {
 	const classes = useStyles();
 
 	const renderCards = spaceObjects.map((object) => {
@@ -58,7 +60,11 @@ const CardGrid: React.FC<ICardGridProps> = ({ spaceObjects }) => {
 						<Button size='small' color='primary' className={classes.cardButton}>
 							Edit
 						</Button>
-						<Button size='small' color='primary' className={classes.cardButton}>
+						<Button
+							size='small'
+							color='primary'
+							className={classes.cardButton}
+							onClick={() => onDeleteSpaceObject(object.id)}>
 							Delete
 						</Button>
 					</CardActions>

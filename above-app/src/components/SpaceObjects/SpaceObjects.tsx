@@ -29,6 +29,26 @@ const useStyles = makeStyles((theme) => ({
 const SpaceObjects = () => {
 	const classes = useStyles();
 	const [spaceObjects, setSpaceObjects] = useState<IItem[]>([]);
+	// const [selectedSpaceObject, setSelectedSpaceObject] = useState<IItem | null>(null);
+
+	// const onSelectSpaceObject = (id: string) => {
+	// 	let selectObject = spaceObjects.filter((object) => object.id === id);
+	// 	setSelectedSpaceObject(selectObject[0]);
+	// };
+
+	// const onCreateSpaceObject = (spaceObject: IItem) => {
+	// 	setSpaceObjects([...spaceObjects, spaceObject]);
+	// };
+
+	// const onEditSpaceObject = (spaceObject: IItem) => {
+	// 	setSpaceObjects([...spaceObjects.filter((object) => object.id !== spaceObject.id), spaceObject]);
+	// };
+
+	const onDeleteSpaceObject = (id: string) => {
+		Api.Items.delete(id).then(() => {
+			setSpaceObjects([...spaceObjects.filter((object) => object.id !== id)]);
+		});
+	};
 
 	useEffect(() => {
 		Api.Items.list().then((response) => {
@@ -48,8 +68,8 @@ const SpaceObjects = () => {
 					</Button>
 				</Grid>
 			</Grid>
-
-			<CardGrid spaceObjects={spaceObjects} />
+			{/* <CardGrid spaceObjects={spaceObjects} onSelectSpaceObject={onSelectSpaceObject} /> */}
+			<CardGrid spaceObjects={spaceObjects} onDeleteSpaceObject={onDeleteSpaceObject} />
 		</div>
 	);
 };
