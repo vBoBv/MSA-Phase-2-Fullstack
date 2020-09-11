@@ -2,6 +2,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './Header/Header';
 import LandingPage from './LandingPage/LandingPage';
+import Particle from './Particles/Particles';
 
 const App = () => {
 	return (
@@ -9,6 +10,7 @@ const App = () => {
 			<CssBaseline />
 			<Header />
 			<LandingPage />
+			<Particle />
 		</div>
 	);
 };

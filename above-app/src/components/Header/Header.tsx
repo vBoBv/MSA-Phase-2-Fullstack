@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import NavigationTabs from '../NavigationTabs/NavigationTabs';
 import { Grid } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import WOW from 'wowjs';
@@ -13,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
 		paddingTop: '1.5rem',
 		fontFamily: 'Audiowide, cursive',
 		fontSize: '2rem',
-		paddingLeft: '2rem'
+		paddingLeft: '2rem',
+		zIndex: 1
 	},
 	logo: {
 		width: '50px',
@@ -46,6 +48,9 @@ const Header = () => {
 			</Grid>
 			<Grid item className={classes.logoItem}>
 				<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
+			</Grid>
+			<Grid item>
+				<NavigationTabs />
 			</Grid>
 		</Grid>
 	);

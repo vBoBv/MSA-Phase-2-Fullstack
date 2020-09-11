@@ -8,14 +8,13 @@ import WOW from 'wowjs';
 import backgroundImg from '../../assets/space.jpg';
 
 const useStyles = makeStyles((theme) => ({
-	backgroundImage: {
-		backgroundImage: `url(${backgroundImg})`,
-		backgroundSize: 'cover',
-		backgroundPosition: 'top',
-		position: 'relative',
-		height: '100vh',
-		zIndex: -2,
-		color: 'white'
+	container: {
+		position: 'absolute',
+		top: '50%',
+		right: '50%',
+		transform: `translate(${50}%,${-50}%)`,
+		color: 'white',
+		zIndex: 1
 	},
 	pageSubHeading1: {
 		fontFamily: 'Bungee Hairline, cursive',
@@ -41,8 +40,7 @@ const LandingPage = () => {
 
 	return (
 		<Fragment>
-			<Particle />
-			<Grid container className={classes.backgroundImage} justify='center' alignItems='center' direction='column'>
+			<Grid container className={classes.container} justify='center' alignItems='center' direction='column'>
 				<Grid item>
 					<Typography className={`${classes.pageHeading} wow fadeIn`}>All in one Dimension</Typography>
 				</Grid>
