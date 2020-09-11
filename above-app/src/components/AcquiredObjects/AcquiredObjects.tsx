@@ -16,6 +16,7 @@ import logo from '../../assets/logo.png';
 import Api from '../api/Api';
 import { IItem } from '../../common/Interfaces';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import Particle from '../Particles/Particles';
 
 const useStyles = makeStyles((theme) => ({
 	cardContainer: {
@@ -102,6 +103,7 @@ const AcquiredObjects = () => {
 					</IconButton>
 				</Grid>
 			</Grid>
+			<Particle />
 		</Fragment>
 	);
 };
