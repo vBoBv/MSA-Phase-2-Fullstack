@@ -1,46 +1,51 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { FormEvent, useState, useEffect } from 'react';
 import { IItem } from '../../common/Interfaces';
 import { v4 as uuid } from 'uuid';
+import history from '../history';
 
-interface ISpaceObjectForm {
+interface ISpaceObjectFormProps {
 	spaceObject: IItem;
-	createSpaceObject: (spaceObject: IItem) => void;
+	createSpaceObject?: (spaceObject: IItem) => void;
+	updateSpaceObject?: (spaceObject: IItem) => void;
 }
 
-const SpaceObjectForm: React.FC<ISpaceObjectForm> = ({ spaceObject: initialSpaceObjectState, createSpaceObject }) => {
-	const initializeFormState = () => {
-		if (initialSpaceObjectState) {
-			return initialSpaceObjectState;
-		} else {
-			return {
-				id: '',
-				name: '',
-				description: '',
-				possession: ''
-			};
-		}
-	};
+const StreamForm: React.FC<ISpaceObjectFormProps> = ({
+	spaceObject: initialSpaceObjectState,
+	createSpaceObject,
+	updateSpaceObject
+}) => {
+	const [spaceObject, setSpaceObject] = useState<IItem>(initialSpaceObjectState);
 
-	const [spaceObject, setSpaceObject] = useState<IItem>(initializeFormState);
+	useEffect(() => {
+		setSpaceObject(initialSpaceObjectState);
+	}, [initialSpaceObjectState]);
 
-	const onInputChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		setSpaceObject({ ...spaceObject, [event.currentTarget.name]: event.currentTarget.value });
-	};
-
-	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		// e.preventDefault();
+	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 		if (spaceObject.id.length === 0) {
 			let newSpaceObject = {
 				...spaceObject,
 				id: uuid()
 			};
-			createSpaceObject(newSpaceObject);
+			if (createSpaceObject) {
+				createSpaceObject(newSpaceObject);
+				history.push('/spaceobjects');
+			}
+		} else {
+			if (updateSpaceObject) {
+				updateSpaceObject(spaceObject);
+				history.push('/spaceobjects');
+			}
 		}
+	};
+
+	const onInputChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		setSpaceObject({ ...spaceObject, [event.currentTarget.name]: event.currentTarget.value });
 	};
 
 	return (
 		<div style={{ paddingTop: '10rem' }}>
-			<form className='ui form' onSubmit={(e) => onSubmit(e)}>
+			<form className='ui form' onSubmit={(event) => onSubmit(event)}>
 				<div className='field'>
 					<label>Name</label>
 					<input type='text' name='name' placeholder='Name' onChange={onInputChange} value={spaceObject.name} />
@@ -73,4 +78,4 @@ const SpaceObjectForm: React.FC<ISpaceObjectForm> = ({ spaceObject: initialSpace
 	);
 };
 
-export default SpaceObjectForm;
+export default StreamForm;
