@@ -58,6 +58,12 @@ const SpaceObjectList = () => {
 		});
 	}, []);
 
+	const onDeleteSpaceObject = (id: string) => {
+		Api.Items.delete(id).then(() => {
+			setSpaceObjects([...spaceObjects.filter((object) => object.id !== id)]);
+		});
+	};
+
 	const renderSpaceObjectList = spaceObjects.map((spaceObject) => {
 		return (
 			<Grid item key={spaceObject.id}>
@@ -82,11 +88,13 @@ const SpaceObjectList = () => {
 								Edit
 							</Button>
 						</Link>
-						<Link to={`/spaceobjects/delete/${spaceObject.id}`}>
-							<Button size='small' color='primary' className={classes.cardButton}>
-								Delete
-							</Button>
-						</Link>
+						<Button
+							size='small'
+							color='primary'
+							className={classes.cardButton}
+							onClick={() => onDeleteSpaceObject(spaceObject.id)}>
+							Delete
+						</Button>
 						<Link to={`/spaceobjects/${spaceObject.id}`}>View</Link>
 					</CardActions>
 				</Card>
