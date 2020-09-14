@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { IUser } from '../../common/Interfaces';
+import history from '../history';
+
+interface INavigationProps {
+	user: IUser | null;
+	setUser: (user: IUser | null) => void;
+}
 
 const useStyles = makeStyles((theme) => ({
 	tabsContainer: {
@@ -13,11 +20,20 @@ const useStyles = makeStyles((theme) => ({
 	link: {
 		color: 'inherit',
 		textDecoration: 'none'
+	},
+	button: {
+		color: 'inherit'
 	}
 }));
 
-const NavigationTabs = () => {
+const NavigationTabs: React.FC<INavigationProps> = ({ user, setUser }) => {
 	const classes = useStyles();
+
+	const logout = () => {
+		window.localStorage.setItem('jwt', null!);
+		setUser(null);
+		history.push('/');
+	};
 
 	return (
 		<Grid container justify='space-evenly' className={classes.tabsContainer}>
@@ -35,8 +51,22 @@ const NavigationTabs = () => {
 				Auction
 			</Grid>
 			<Grid item className={classes.tab}>
-				Join us
+				<Link to='/signup' className={classes.link}>
+					Join us
+				</Link>
 			</Grid>
+			{user ? (
+				<Fragment>
+					<Grid item className={classes.tab}>
+						{user.name}
+					</Grid>
+					<Grid item className={classes.tab}>
+						<Button onClick={logout} className={classes.button}>
+							Logout
+						</Button>
+					</Grid>
+				</Fragment>
+			) : null}
 		</Grid>
 	);
 };

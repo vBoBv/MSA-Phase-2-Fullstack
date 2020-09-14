@@ -4,8 +4,14 @@ import { Grid } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import WOW from 'wowjs';
 import Typed from 'react-typed';
+import { IUser } from '../../common/Interfaces';
 
 import logo from '../../assets/logo.png';
+
+interface IHeaderProps {
+	user: IUser | null;
+	setUser: (user: IUser | null) => void;
+}
 
 const useStyles = makeStyles((theme) => ({
 	navBarContainer: {
@@ -31,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const Header = () => {
+const Header: React.FC<IHeaderProps> = ({ user, setUser }) => {
 	useEffect(() => {
 		new WOW.WOW({
 			live: false
@@ -58,7 +64,7 @@ const Header = () => {
 			</Grid>
 
 			<Grid item>
-				<NavigationTabs />
+				<NavigationTabs user={user} setUser={setUser} />
 			</Grid>
 		</Grid>
 	);
