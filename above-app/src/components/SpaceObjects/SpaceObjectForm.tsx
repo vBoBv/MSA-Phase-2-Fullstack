@@ -29,14 +29,13 @@ const StreamForm: React.FC<ISpaceObjectFormProps> = ({
 			};
 			if (createSpaceObject) {
 				createSpaceObject(newSpaceObject);
-				history.push('/spaceobjects');
 			}
 		} else {
 			if (updateSpaceObject) {
 				updateSpaceObject(spaceObject);
-				history.push('/spaceobjects');
 			}
 		}
+		history.push('/spaceobjects');
 	};
 
 	const onInputChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
