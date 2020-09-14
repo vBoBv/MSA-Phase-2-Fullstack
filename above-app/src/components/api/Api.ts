@@ -1,7 +1,18 @@
 import axios, { AxiosResponse } from 'axios';
-import { IItem } from '../../common/Interfaces';
+import { IItem, IUser, IUserForm } from '../../common/Interfaces';
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? 'https://localhost:44379/api/' : 'hostedWeb';
+
+axios.interceptors.request.use(
+	(config) => {
+		const token = window.localStorage.getItem('jwt');
+		if (token) config.headers.Authorization = `Bearer ${token}`;
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	}
+);
 
 const response = (response: AxiosResponse) => response.data;
 
@@ -20,4 +31,10 @@ const Items = {
 	delete: (id: string) => requests.del(`/items/${id}`)
 };
 
-export default { Items };
+const User = {
+	current: (): Promise<IUser> => requests.get('/user'),
+	login: (user: IUserForm): Promise<IUser> => requests.post(`user/login`, user),
+	register: (user: IUserForm): Promise<IUser> => requests.post(`/user/register`, user)
+};
+
+export default { Items, User };
