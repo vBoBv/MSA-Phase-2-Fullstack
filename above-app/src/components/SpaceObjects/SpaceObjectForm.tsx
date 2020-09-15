@@ -29,6 +29,7 @@ const StreamForm: React.FC<ISpaceObjectFormProps> = ({
 			};
 			if (createSpaceObject) {
 				createSpaceObject(newSpaceObject);
+				// history.push(`/spaceobjects/${newSpaceObject.id}`);
 			}
 		} else {
 			if (updateSpaceObject) {
