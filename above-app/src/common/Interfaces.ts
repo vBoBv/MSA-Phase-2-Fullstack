@@ -3,6 +3,7 @@ export interface IItem {
 	name: string;
 	description: string;
 	possession: string;
+	bids?: IBid[];
 }
 
 export interface IUser {
@@ -17,4 +18,11 @@ export interface IUserForm {
 	password: string;
 	name?: string;
 	username?: string;
+}
+
+export interface IBid {
+	name: string;
+	username: string;
+	image: string;
+	price: number;
 }

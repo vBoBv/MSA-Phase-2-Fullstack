@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from 'axios';
 import { IItem, IUser, IUserForm } from '../../common/Interfaces';
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? 'https://localhost:44379/api/' : 'hostedWeb';
+axios.defaults.baseURL =
+	process.env.NODE_ENV === 'development' ? 'https://localhost:44379/api/' : 'https://aboveserver.database.windows.net/';
 
 axios.interceptors.request.use(
 	(config) => {
@@ -28,7 +29,8 @@ const Items = {
 	details: (id: string) => requests.get(`/items/${id}`),
 	create: (item: IItem) => requests.post('items', item),
 	update: (item: IItem) => requests.patch(`items/${item.id}`, item),
-	delete: (id: string) => requests.del(`/items/${id}`)
+	delete: (id: string) => requests.del(`/items/${id}`),
+	placebid: (id: string) => requests.post(`/items/${id}/placebid`, {})
 };
 
 const User = {
