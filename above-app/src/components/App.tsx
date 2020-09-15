@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
+import { Grid, Button } from '@material-ui/core';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './Header/Header';
 import LandingPage from './LandingPage/LandingPage';
@@ -19,6 +21,8 @@ import { IUser } from '../common/Interfaces';
 import './App.css';
 import Api from './api/Api';
 import SignUpForm from './User/SignUpForm';
+import './Translation/i18n';
+import { useTranslation, Trans } from 'react-i18next';
 
 const App = () => {
 	const [user, setUser] = useState<IUser | null>(null);
@@ -33,6 +37,12 @@ const App = () => {
 			getUser();
 		}
 	}, []);
+
+	const { t, i18n } = useTranslation();
+
+	const changeLanguage = (lng: string) => {
+		i18n.changeLanguage(lng);
+	};
 
 	return (
 		<div>
@@ -58,6 +68,10 @@ const App = () => {
 					<Route exact path='/signup' render={(props) => <SignUpForm {...props} setUser={setUser} />} />
 					<Route exact path='/auction' component={Auction} />
 				</Switch>
+				<Grid container style={{ backgroundColor: 'white' }}>
+					<Button onClick={() => changeLanguage('maori')}>Maori</Button>
+					<Button onClick={() => changeLanguage('english')}>English</Button>
+				</Grid>
 			</Router>
 		</div>
 	);
