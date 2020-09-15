@@ -3,6 +3,7 @@ import { IUserForm } from '../../common/Interfaces';
 import Api from '../api/Api';
 import history from '../history';
 import { IUser } from '../../common/Interfaces';
+import { Trans } from 'react-i18next';
 
 interface ILoginFormProps {
 	setUser: (user: IUser) => void;
@@ -31,11 +32,15 @@ const LoginForm: React.FC<ILoginFormProps> = ({ setUser }) => {
 		<div style={{ paddingTop: '10rem' }}>
 			<form className='ui form' onSubmit={(e) => onSubmit(e)}>
 				<div className='field'>
-					<label>Email</label>
+					<label>
+						<Trans>Email</Trans>
+					</label>
 					<input type='text' name='email' placeholder='Email' onChange={onInputChange} value={formValue.email} />
 				</div>
 				<div className='field'>
-					<label>Password</label>
+					<label>
+						<Trans>Password</Trans>
+					</label>
 					<input
 						name='password'
 						placeholder='Password'
@@ -45,7 +50,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ setUser }) => {
 					/>
 				</div>
 				<button className='ui button' type='submit'>
-					Login
+					<Trans>Login</Trans>
 				</button>
 			</form>
 		</div>

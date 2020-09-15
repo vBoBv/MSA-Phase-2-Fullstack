@@ -3,6 +3,7 @@ import { IUserForm } from '../../common/Interfaces';
 import Api from '../api/Api';
 import history from '../history';
 import { IUser } from '../../common/Interfaces';
+import { Trans } from 'react-i18next';
 
 interface ISignUpFormProps {
 	setUser: (user: IUser) => void;
@@ -31,7 +32,9 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 		<div style={{ paddingTop: '10rem' }}>
 			<form className='ui form' onSubmit={(e) => onSubmit(e)}>
 				<div className='field'>
-					<label>Username</label>
+					<label>
+						<Trans>Username</Trans>
+					</label>
 					<input
 						type='text'
 						name='username'
@@ -41,15 +44,21 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 					/>
 				</div>
 				<div className='field'>
-					<label>Name</label>
+					<label>
+						<Trans>Name</Trans>
+					</label>
 					<input type='text' name='name' placeholder='name' onChange={onInputChange} value={formValue.name} />
 				</div>
 				<div className='field'>
-					<label>Email</label>
+					<label>
+						<Trans>Email</Trans>
+					</label>
 					<input type='text' name='email' placeholder='Email' onChange={onInputChange} value={formValue.email} />
 				</div>
 				<div className='field'>
-					<label>Password</label>
+					<label>
+						<Trans>Password</Trans>
+					</label>
 					<input
 						name='password'
 						placeholder='Password'
@@ -59,7 +68,7 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 					/>
 				</div>
 				<button className='ui button' type='submit'>
-					Sign up
+					<Trans>Sign up</Trans>
 				</button>
 			</form>
 		</div>
