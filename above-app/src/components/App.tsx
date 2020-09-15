@@ -12,6 +12,7 @@ import SimpleModal from './SpaceObjects/SpaceObjectDelete';
 import LoginForm from './User/LoginForm';
 
 import SpaceObjectShow from './SpaceObjects/SpaceObjectShow';
+import Auction from './Auction/Auction';
 import history from './history';
 import { IUser } from '../common/Interfaces';
 
@@ -55,6 +56,7 @@ const App = () => {
 					<Route exact path='/spaceobjects/:id' component={SpaceObjectShow} />
 					<Route exact path='/login' render={(props) => <LoginForm {...props} setUser={setUser} />} />
 					<Route exact path='/signup' render={(props) => <SignUpForm {...props} setUser={setUser} />} />
+					<Route exact path='/auction' component={Auction} />
 				</Switch>
 			</Router>
 		</div>
