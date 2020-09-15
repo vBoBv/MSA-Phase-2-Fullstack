@@ -21,10 +21,24 @@ import { IUser } from '../common/Interfaces';
 import './App.css';
 import Api from './api/Api';
 import SignUpForm from './User/SignUpForm';
+import { useTranslation } from 'react-i18next';
 import './Translation/i18n';
-import { useTranslation, Trans } from 'react-i18next';
+import {
+	FacebookIcon,
+	FacebookShareButton,
+	LinkedinShareButton,
+	LinkedinIcon,
+	RedditShareButton,
+	RedditIcon,
+	TwitterShareButton,
+	TwitterIcon
+} from 'react-share';
 
 const App = () => {
+	const SOCIAL_MEDIA_ICON_SIZE = 40;
+	const URL_TO_SHARE = 'https://www.google.com/';
+	const POPUP_TITLE = 'Market for space objects';
+
 	const [user, setUser] = useState<IUser | null>(null);
 
 	const getUser = async () => {
@@ -38,10 +52,40 @@ const App = () => {
 		}
 	}, []);
 
-	const { t, i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
 	const changeLanguage = (lng: string) => {
 		i18n.changeLanguage(lng);
+	};
+
+	const renderSocialMediaShareButtons = () => {
+		return (
+			<React.Fragment>
+				{/*
+				// @ts-ignore */}
+				<FacebookShareButton
+					url={URL_TO_SHARE}
+					quote='Check out a market place to grab some space objects'
+					hashtag='#Above'>
+					<FacebookIcon size={SOCIAL_MEDIA_ICON_SIZE} />
+				</FacebookShareButton>
+				{/*
+				// @ts-ignore */}
+				<LinkedinShareButton url={URL_TO_SHARE} title={POPUP_TITLE}>
+					<LinkedinIcon size={SOCIAL_MEDIA_ICON_SIZE} />
+				</LinkedinShareButton>
+				{/*
+				// @ts-ignore */}
+				<RedditShareButton url={URL_TO_SHARE} title={POPUP_TITLE}>
+					<RedditIcon size={SOCIAL_MEDIA_ICON_SIZE} />
+				</RedditShareButton>
+				{/*
+				// @ts-ignore */}
+				<TwitterShareButton url={URL_TO_SHARE} title={POPUP_TITLE}>
+					<TwitterIcon size={SOCIAL_MEDIA_ICON_SIZE} />
+				</TwitterShareButton>
+			</React.Fragment>
+		);
 	};
 
 	return (
@@ -71,6 +115,9 @@ const App = () => {
 				<Grid container style={{ backgroundColor: 'white' }}>
 					<Button onClick={() => changeLanguage('maori')}>Maori</Button>
 					<Button onClick={() => changeLanguage('english')}>English</Button>
+					<Grid item style={{ backgroundColor: 'red' }}>
+						{renderSocialMediaShareButtons()}
+					</Grid>
 				</Grid>
 			</Router>
 		</div>
