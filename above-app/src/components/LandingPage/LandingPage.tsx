@@ -4,8 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Particle from '../Particles/Particles';
 import Typed from 'react-typed';
 import WOW from 'wowjs';
-
-import backgroundImg from '../../assets/space.jpg';
+import { Trans } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -42,7 +41,9 @@ const LandingPage = () => {
 		<Fragment>
 			<Grid container className={classes.container} justify='center' alignItems='center' direction='column'>
 				<Grid item>
-					<Typography className={`${classes.pageHeading} wow fadeIn`}>All in one Dimension</Typography>
+					<Typography className={`${classes.pageHeading} wow fadeIn`}>
+						<Trans>All in one dimension</Trans>
+					</Typography>
 				</Grid>
 				<Grid item className={classes.pageSubHeading1}>
 					--
