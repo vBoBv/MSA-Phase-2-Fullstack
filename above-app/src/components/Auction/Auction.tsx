@@ -1,12 +1,11 @@
-import React, { useEffect, useState, FormEvent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Accordion, Grid, AccordionDetails, AccordionSummary, Typography, Button } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import backgroundImage from '../../assets/spaceObjects.jpg';
 
 import Api from '../api/Api';
-import { IBid, IItem } from '../../common/Interfaces';
-import { Agent } from 'https';
+import { IItem } from '../../common/Interfaces';
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -33,6 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
 		secondaryHeading: {
 			fontSize: theme.typography.pxToRem(15),
 			color: theme.palette.text.secondary
+		},
+		placeBid: {
+			margin: '1rem'
 		}
 	})
 );
@@ -63,18 +65,11 @@ const Auction = () => {
 		});
 	}, []);
 
-	// const placeBid = (id: string, bid: IBid | null) => {
-	// 	spaceObjects.forEach((spaceObject) => {
-	// 		if (spaceObject.id === id && bid) {
-	// 			bid.price += 200;
-	// 		}
-	// 	});
-	// };
-
 	const placeBid = (id: string) => {
-		Api.Items.placebid(id).then((response) => {
-			// console.log(response);
-		});
+		Api.Items.placebid(id);
+		// Api.Items.placebid(id).then((response) => {
+		// 	// console.log(response);
+		// });
 	};
 
 	const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
@@ -89,7 +84,7 @@ const Auction = () => {
 					className={classes.accordionContaienr}
 					expanded={expanded === `panel${i}`}
 					onChange={handleChange(`panel${i}`)}>
-					<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1bh-content' id='panel1bh-header'>
+					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<Grid container justify='space-between'>
 							<Grid item>
 								<Typography className={classes.heading}>{spaceObject.name}</Typography>
@@ -104,11 +99,22 @@ const Auction = () => {
 					</AccordionDetails>
 					<Grid container direction='column' justify='center' alignContent='center'>
 						<Grid item>
+							<Typography align='center' variant='subtitle1'>
+								Transaction History
+							</Typography>
 							{spaceObject.bids.map((bid) => {
-								return <div key={bid.name}>{bid.price}</div>;
+								return (
+									<Typography key={bid.name} align='center'>
+										$ {bid.price} - {bid.name}
+									</Typography>
+								);
 							})}
 						</Grid>
-						<Button onClick={() => placeBid(spaceObject.id)}>Place Bid</Button>
+						<Grid item>
+							<Button onClick={() => placeBid(spaceObject.id)} variant='outlined' className={classes.placeBid}>
+								Place Bid
+							</Button>
+						</Grid>
 					</Grid>
 				</Accordion>
 			);
