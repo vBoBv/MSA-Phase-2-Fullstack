@@ -8,7 +8,8 @@ import {
 	CardContent,
 	Typography,
 	Button,
-	IconButton
+	IconButton,
+	useMediaQuery
 } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import logo from '../../assets/logo.png';
@@ -22,11 +23,16 @@ const useStyles = makeStyles((theme) => ({
 	cardContainer: {
 		maxWidth: 200,
 		backgroundColor: 'transparent',
-		color: 'white'
+		color: 'white',
+		[theme.breakpoints.down('sm')]: {
+			maxWidth: 180
+		}
 	},
 	cardItem: {
 		backgroundImage: 'linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1))',
-		color: 'inherit'
+		color: 'inherit',
+		display: 'flex',
+		justifyContent: 'center'
 	},
 	cardButton: {
 		color: 'white'
@@ -43,7 +49,19 @@ const useStyles = makeStyles((theme) => ({
 		overflow: 'auto',
 		marginTop: theme.spacing(5)
 	},
-	UFOTitle: {},
+	acquiredTitle: {
+		position: 'absolute',
+		top: '20%',
+		color: 'white',
+		zIndex: 1,
+		[theme.breakpoints.down('md')]: {
+			paddingTop: '1rem',
+			top: '10%'
+		},
+		[theme.breakpoints.down('sm')]: {
+			top: '20%'
+		}
+	},
 	moreButton: {
 		color: 'inherit'
 	}
@@ -51,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
 
 const AcquiredObjects = () => {
 	const classes = useStyles();
+	const theme = useTheme();
+	const isScreenMedium = useMediaQuery(theme.breakpoints.down('md'));
+	const isScreenSmall = useMediaQuery(theme.breakpoints.down('sm'));
+	const isScreenXSmall = useMediaQuery(theme.breakpoints.down('xs'));
 	const [objects, setObjects] = useState<IItem[]>([]);
 
 	useEffect(() => {
@@ -72,18 +94,13 @@ const AcquiredObjects = () => {
 							title={object.name}
 						/>
 						<CardContent className={classes.cardItem}>
-							<Typography gutterBottom variant='h5' component='h2'>
+							<Typography gutterBottom variant='h5' component='h2' align='center'>
 								{object.name}
 							</Typography>
 						</CardContent>
 					</CardActionArea>
 					<CardActions className={classes.cardItem}>
-						<Button size='small' color='primary' className={classes.cardButton}>
-							Share
-						</Button>
-						<Button size='small' color='primary' className={classes.cardButton}>
-							Learn More
-						</Button>
+						<Typography>Owned By: {object.possession}</Typography>
 					</CardActions>
 				</Card>
 			</Grid>
@@ -92,12 +109,20 @@ const AcquiredObjects = () => {
 
 	return (
 		<Fragment>
-			<Grid container className={classes.objectsContainer} justify='center' spacing={10}>
-				<Grid container justify='center' className={classes.UFOTitle}>
-					<Typography variant='h4'>Acquired Objects</Typography>
-				</Grid>
+			<Grid container justify='center' className={classes.acquiredTitle}>
+				<Typography variant={isScreenMedium ? 'h5' : isScreenSmall || isScreenXSmall ? 'h6' : 'h4'}>
+					Acquired Objects
+				</Typography>
+			</Grid>
+			<Grid
+				container
+				className={classes.objectsContainer}
+				justify='center'
+				alignItems='center'
+				spacing={isScreenSmall ? 5 : 10}
+				direction={isScreenSmall ? 'column' : 'row'}>
 				{renderobjects}
-				<Grid container justify='center' className={classes.moreButton}>
+				<Grid item container justify='center' className={classes.moreButton}>
 					<IconButton>
 						<MoreHorizIcon fontSize='large' className={classes.cardButton} />
 					</IconButton>
