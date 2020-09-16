@@ -9,7 +9,7 @@ import { IItem } from '../../common/Interfaces';
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		root: {
+		auctionContainer: {
 			width: '100%',
 			paddingTop: '10rem',
 			backgroundImage: `url(${backgroundImage})`,
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			backgroundPosition: 'top',
 			position: 'relative',
 
-			height: '100%',
+			height: '100vh',
 			color: 'white',
 			paddingBottom: '10rem'
 		},
@@ -122,7 +122,7 @@ const Auction = () => {
 	});
 
 	return (
-		<Grid container className={classes.root} justify='center'>
+		<Grid container className={classes.auctionContainer} justify='center'>
 			{renderAuctionItems}
 		</Grid>
 	);
