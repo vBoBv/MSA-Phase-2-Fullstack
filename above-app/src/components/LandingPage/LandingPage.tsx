@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Particle from '../Particles/Particles';
 import Typed from 'react-typed';
 import WOW from 'wowjs';
@@ -17,19 +17,34 @@ const useStyles = makeStyles((theme) => ({
 	},
 	pageSubHeading1: {
 		fontFamily: 'Bungee Hairline, cursive',
-		fontSize: '3rem'
+		fontSize: '3rem',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '2.5rem'
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.8rem'
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.4rem'
+		}
 	},
 	pageHeading: {
-		// fontFamily: 'Cinzel Decorative, cursive',
-		// fontFamily: 'Patua One, cursive',
 		fontFamily: 'Nova Cut, cursive',
-		fontSize: '5rem'
+		fontSize: '5rem',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '3rem'
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '2rem'
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.5rem'
+		}
 	}
 }));
 
 const LandingPage = () => {
 	const classes = useStyles();
-	const theme = useTheme();
 
 	useEffect(() => {
 		new WOW.WOW({
