@@ -38,7 +38,11 @@ const useStyles = makeStyles((theme) => ({
 		textDecoration: 'none'
 	},
 	button: {
-		color: 'inherit'
+		color: 'inherit',
+		cursor: 'pointer',
+		backgroundImage: 'linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.1))',
+		padding: '0.5rem',
+		borderRadius: '0.3rem'
 	}
 }));
 
@@ -59,7 +63,7 @@ const NavigationTabs: React.FC<INavigationProps> = ({ user, setUser }) => {
 			<Grid container justify='space-evenly' className={classes.tabsContainer}>
 				<Grid item className={classes.tab}>
 					<Link to='/' className={classes.link}>
-						{isScreenSmall || isScreenXSmall ? null : <Trans>Home</Trans>}
+						{isScreenSmall || isScreenXSmall || user ? null : <Trans>Home</Trans>}
 					</Link>
 				</Grid>
 				<Grid item className={classes.tab}>
@@ -72,20 +76,28 @@ const NavigationTabs: React.FC<INavigationProps> = ({ user, setUser }) => {
 						<Trans>Auction</Trans>
 					</Link>
 				</Grid>
-				<Grid item className={classes.tab}>
-					<Link to='/joinus' className={classes.link}>
-						<Trans>Join us</Trans>
-					</Link>
-				</Grid>
+				{user ? null : (
+					<Grid item className={classes.tab}>
+						<Link to='/joinus' className={classes.link}>
+							<Trans>Join us</Trans>
+						</Link>
+					</Grid>
+				)}
+
 				{user ? (
 					<Fragment>
+						{isScreenSmall ? null : (
+							<Grid item className={classes.tab}>
+								<Link to='/spaceobjects' className={classes.link}>
+									<span className={classes.button}>{user.name}</span>
+								</Link>
+							</Grid>
+						)}
+
 						<Grid item className={classes.tab}>
-							{user.name}
-						</Grid>
-						<Grid item className={classes.tab}>
-							<Button onClick={logout} className={classes.button}>
+							<span onClick={logout} className={classes.button}>
 								Logout
-							</Button>
+							</span>
 						</Grid>
 					</Fragment>
 				) : null}
