@@ -17,6 +17,7 @@ import Api from '../api/Api';
 import { IItem } from '../../common/Interfaces';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Particle from '../Particles/Particles';
+import { Trans } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
 	cardContainer: {
@@ -119,7 +120,7 @@ const AcquiredObjects = () => {
 		<Fragment>
 			<Grid container justify='center' className={classes.acquiredTitle}>
 				<Typography variant={isScreenMedium ? 'h5' : isScreenSmall || isScreenXSmall ? 'h6' : 'h4'}>
-					Acquired Objects
+					<Trans>Acquired Objects</Trans>
 				</Typography>
 			</Grid>
 			<Grid
