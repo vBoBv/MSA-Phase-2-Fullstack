@@ -11,7 +11,7 @@ import SpaceObjectCreate from './SpaceObjects/SpaceObjectCreate';
 import SpaceObjectEdit from './SpaceObjects/SpaceObjectEdit';
 // import SpaceObjectDelete from './SpaceObjects/SpaceObjectDelete';
 // import SimpleModal from './SpaceObjects/SpaceObjectDelete';
-import LoginForm from './User/LoginForm';
+// import LoginForm from './User/LoginForm';
 
 import SpaceObjectShow from './SpaceObjects/SpaceObjectShow';
 import Auction from './Auction/Auction';
@@ -20,7 +20,7 @@ import { IUser } from '../common/Interfaces';
 
 import './App.css';
 import Api from './api/Api';
-import SignUpForm from './User/SignUpForm';
+// import SignUpForm from './User/SignUpForm';
 import { useTranslation } from 'react-i18next';
 import './Translation/i18n';
 import {
@@ -34,6 +34,7 @@ import {
 	TwitterIcon
 } from 'react-share';
 import JoinUs from './User/JoinUs';
+import Footer from './Footer/Footer';
 
 const App = () => {
 	const SOCIAL_MEDIA_ICON_SIZE = 40;
@@ -114,13 +115,16 @@ const App = () => {
 					<Route exact path='/auction' component={Auction} />
 					<Route exact path='/joinus' render={(props) => <JoinUs {...props} setUser={setUser} />} />
 				</Switch>
-				<Grid container style={{ backgroundColor: 'white' }}>
-					<Button onClick={() => changeLanguage('maori')}>Maori</Button>
-					<Button onClick={() => changeLanguage('english')}>English</Button>
-					<Grid item style={{ backgroundColor: 'red' }}>
-						{renderSocialMediaShareButtons()}
+				<Grid container justify='center' alignContent='center' direction='column'>
+					<Grid item>
+						<Grid container justify='center'>
+							<Button onClick={() => changeLanguage('maori')}>Maori</Button>
+							<Button onClick={() => changeLanguage('english')}>English</Button>
+						</Grid>
 					</Grid>
+					<Grid item>{renderSocialMediaShareButtons()}</Grid>
 				</Grid>
+				<Footer />
 			</Router>
 		</div>
 	);
