@@ -7,7 +7,6 @@ import {
 	CardMedia,
 	CardContent,
 	Typography,
-	Button,
 	IconButton,
 	useMediaQuery
 } from '@material-ui/core';
@@ -47,7 +46,13 @@ const useStyles = makeStyles((theme) => ({
 		maxWidth: '80%',
 		maxHeight: '80%',
 		overflow: 'auto',
-		marginTop: theme.spacing(5)
+		marginTop: theme.spacing(5),
+		[theme.breakpoints.down('md')]: {
+			top: '55%'
+		},
+		[theme.breakpoints.down('sm')]: {
+			top: '50%'
+		}
 	},
 	acquiredTitle: {
 		position: 'absolute',
@@ -57,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('md')]: {
 			paddingTop: '1rem',
 			top: '10%'
+		},
+		[theme.breakpoints.down('sm')]: {
+			top: '12%'
 		},
 		[theme.breakpoints.down('sm')]: {
 			top: '20%'
