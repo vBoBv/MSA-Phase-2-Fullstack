@@ -52,7 +52,7 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 				<Grid container justify='space-between' className={classes.field}>
 					<Grid item className={classes.label}>
 						<label htmlFor='username'>
-							<Trans>Username:</Trans>
+							<Trans>Username</Trans>
 						</label>
 					</Grid>
 					<Grid>
@@ -68,7 +68,7 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 				<Grid container justify='space-between' className={classes.field}>
 					<Grid item className={classes.label}>
 						<label htmlFor='name'>
-							<Trans>Name:</Trans>
+							<Trans>Name</Trans>
 						</label>
 					</Grid>
 					<Grid item>
@@ -78,7 +78,7 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 				<Grid container justify='space-between' className={classes.field}>
 					<Grid item className={classes.label}>
 						<label htmlFor='email'>
-							<Trans>Email:</Trans>
+							<Trans>Email</Trans>
 						</label>
 					</Grid>
 					<Grid item>

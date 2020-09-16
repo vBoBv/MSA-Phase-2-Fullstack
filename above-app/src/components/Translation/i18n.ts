@@ -35,7 +35,7 @@ i18n
 					'Join us': 'Pāhekoheko',
 					'All in one dimension': 'Katoa i te waahanga kotahi',
 					'--Browse - Buy - Auction--': '--whakaraparapa - hoko - māketePlay--',
-					'Acquired Objects': 'taonga riro',
+					'Acquired Objects': 'Taonga riro',
 					Username: 'Ingoa Kaiwhakamahi',
 					Name: 'Tūingoa Tangata',
 					Email: 'Karere Rorohiko',

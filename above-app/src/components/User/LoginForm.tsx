@@ -52,7 +52,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ setUser }) => {
 				<Grid container justify='space-between' className={classes.field}>
 					<Grid item className={classes.label}>
 						<label htmlFor='email'>
-							<Trans>Email:</Trans>
+							<Trans>Email</Trans>
 						</label>
 					</Grid>
 					<Grid item>
@@ -62,7 +62,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ setUser }) => {
 				<Grid container justify='space-between' className={classes.field}>
 					<Grid item className={classes.label}>
 						<label>
-							<Trans>Password:</Trans>
+							<Trans>Password</Trans>
 						</label>
 					</Grid>
 					<Grid item>
