@@ -23,7 +23,8 @@ i18n
 					Email: 'Email',
 					Password: 'Password',
 					'Sign up': 'Sign up',
-					Login: 'Login'
+					Login: 'Login',
+					Submit: 'Submit'
 				}
 			},
 			maori: {
@@ -41,7 +42,8 @@ i18n
 					Email: 'Karere Rorohiko',
 					Password: 'Kupu Muna',
 					'Sign up': 'Hainatanga',
-					Login: 'Takiuru'
+					Login: 'Takiuru',
+					Submit: 'Whakatakoto'
 				}
 			}
 		},

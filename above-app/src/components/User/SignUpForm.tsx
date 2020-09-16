@@ -55,7 +55,7 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 							<Trans>Username</Trans>
 						</label>
 					</Grid>
-					<Grid>
+					<Grid item>
 						<input
 							type='text'
 							name='username'
@@ -97,7 +97,7 @@ const SignUpForm: React.FC<ISignUpFormProps> = ({ setUser }) => {
 							<Trans>Password</Trans>
 						</label>
 					</Grid>
-					<Grid>
+					<Grid item>
 						<input
 							name='password'
 							placeholder='Password'
