@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Grid, Button, useMediaQuery } from '@material-ui/core';
+import { Grid, useMediaQuery } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { IUser } from '../../common/Interfaces';
 import history from '../history';

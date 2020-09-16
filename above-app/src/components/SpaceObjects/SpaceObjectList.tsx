@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Card, CardActions, CardActionArea, CardMedia, CardContent, Typography, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {
+	Grid,
+	Card,
+	CardActions,
+	CardActionArea,
+	CardMedia,
+	CardContent,
+	Typography,
+	Button,
+	useMediaQuery
+} from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import { IItem } from '../../common/Interfaces';
-
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import backgroundImage from '../../assets/spaceObjects.jpg';
 import logo from '../../assets/logo.png';
 import Api from '../api/Api';
@@ -17,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(4)
 	},
 	cardItem: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 		backgroundImage: 'linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1))',
 		color: 'inherit',
 		textAlign: 'center'
@@ -45,12 +58,21 @@ const useStyles = makeStyles((theme) => ({
 	},
 	addNew: {
 		marginBottom: '3rem'
+	},
+	link: {
+		textDecoration: 'none',
+		color: 'inherit'
+	},
+	name: {
+		paddingRight: '0.5rem'
 	}
 }));
 
 const SpaceObjectList = () => {
 	const classes = useStyles();
+	const theme = useTheme();
 	const [spaceObjects, setSpaceObjects] = useState<IItem[]>([]);
+	const isScreenSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
 	useEffect(() => {
 		Api.Items.list().then((response) => {
@@ -77,9 +99,12 @@ const SpaceObjectList = () => {
 							title={spaceObject.name}
 						/>
 						<CardContent className={classes.cardItem}>
-							<Typography gutterBottom variant='h5' component='h2'>
+							<Typography variant='h5' component='h2' className={classes.name}>
 								{spaceObject.name}
 							</Typography>
+							<Link to={`/spaceobjects/${spaceObject.id}`} className={classes.link}>
+								<ArrowForwardIcon />
+							</Link>
 						</CardContent>
 					</CardActionArea>
 					<CardActions className={classes.cardButtonGroup}>
@@ -95,7 +120,6 @@ const SpaceObjectList = () => {
 							onClick={() => onDeleteSpaceObject(spaceObject.id)}>
 							Delete
 						</Button>
-						<Link to={`/spaceobjects/${spaceObject.id}`}>View</Link>
 					</CardActions>
 				</Card>
 			</Grid>
@@ -106,7 +130,7 @@ const SpaceObjectList = () => {
 		<div className={classes.spaceObjectsContainer}>
 			<Grid container justify='center' alignItems='center' direction='column'>
 				<Grid item className={classes.title}>
-					<Typography variant='h4'>Identified / Unidentified Flying Objects</Typography>
+					<Typography variant={isScreenSmall ? 'h6' : 'h4'}>Identified / Unidentified Flying Objects</Typography>
 				</Grid>
 				<Grid item className={classes.addNew}>
 					<Link to='/spaceobjects/new'>
