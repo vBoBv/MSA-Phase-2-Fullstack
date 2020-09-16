@@ -10,7 +10,7 @@ import SpaceObjectList from './SpaceObjects/SpaceObjectList';
 import SpaceObjectCreate from './SpaceObjects/SpaceObjectCreate';
 import SpaceObjectEdit from './SpaceObjects/SpaceObjectEdit';
 // import SpaceObjectDelete from './SpaceObjects/SpaceObjectDelete';
-import SimpleModal from './SpaceObjects/SpaceObjectDelete';
+// import SimpleModal from './SpaceObjects/SpaceObjectDelete';
 import LoginForm from './User/LoginForm';
 
 import SpaceObjectShow from './SpaceObjects/SpaceObjectShow';
@@ -33,6 +33,7 @@ import {
 	TwitterShareButton,
 	TwitterIcon
 } from 'react-share';
+import JoinUs from './User/JoinUs';
 
 const App = () => {
 	const SOCIAL_MEDIA_ICON_SIZE = 40;
@@ -106,11 +107,12 @@ const App = () => {
 					<Route exact path='/spaceobjects' component={SpaceObjectList} />
 					<Route exact path='/spaceobjects/new' component={SpaceObjectCreate} />
 					<Route exact path='/spaceobjects/edit/:id' component={SpaceObjectEdit} />
-					<Route exact path='/spaceobjects/delete/:id' component={SimpleModal} />
+					{/* <Route exact path='/spaceobjects/delete/:id' component={SimpleModal} /> */}
 					<Route exact path='/spaceobjects/:id' component={SpaceObjectShow} />
-					<Route exact path='/login' render={(props) => <LoginForm {...props} setUser={setUser} />} />
-					<Route exact path='/signup' render={(props) => <SignUpForm {...props} setUser={setUser} />} />
+					{/* <Route exact path='/login' render={(props) => <LoginForm {...props} setUser={setUser} />} />
+					<Route exact path='/signup' render={(props) => <SignUpForm {...props} setUser={setUser} />} /> */}
 					<Route exact path='/auction' component={Auction} />
+					<Route exact path='/joinus' render={(props) => <JoinUs {...props} setUser={setUser} />} />
 				</Switch>
 				<Grid container style={{ backgroundColor: 'white' }}>
 					<Button onClick={() => changeLanguage('maori')}>Maori</Button>
