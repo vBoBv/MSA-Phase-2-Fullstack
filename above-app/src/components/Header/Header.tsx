@@ -5,8 +5,10 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import WOW from 'wowjs';
 import Typed from 'react-typed';
 import { IUser } from '../../common/Interfaces';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
+import './Header.css';
 
 interface IHeaderProps {
 	user: IUser | null;
@@ -46,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('sm')]: {
 			paddingTop: '1rem'
 		}
+	},
+	logoLink: {
+		color: 'inherit'
 	}
 }));
 
@@ -70,16 +75,20 @@ const Header: React.FC<IHeaderProps> = ({ user, setUser }) => {
 			className={classes.navBarContainer}>
 			<Grid item className={classes.logoContainer}>
 				<Grid item>
-					<img
-						className={`${classes.logo} wow rollIn rotatingAnimation`}
-						src={logo}
-						alt='Logo'
-						data-wow-duration='2s'
-						data-wow-delay='1.5s'
-					/>
+					<Link to='/'>
+						<img
+							className={`${classes.logo} wow rollIn rotatingAnimation`}
+							src={logo}
+							alt='Logo'
+							data-wow-duration='2s'
+							data-wow-delay='1.5s'
+						/>
+					</Link>
 				</Grid>
 				<Grid item className={classes.logoItem}>
-					<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
+					<Link to='/' className={classes.logoLink}>
+						<Typed strings={['Above']} typeSpeed={150} backSpeed={100} backDelay={10} smartBackspace />
+					</Link>
 				</Grid>
 			</Grid>
 
