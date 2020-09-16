@@ -68,7 +68,9 @@ const NavigationTabs: React.FC<INavigationProps> = ({ user, setUser }) => {
 					</Link>
 				</Grid>
 				<Grid item className={classes.tab}>
-					<Trans>Auction</Trans>
+					<Link to='/auction' className={classes.link}>
+						<Trans>Auction</Trans>
+					</Link>
 				</Grid>
 				<Grid item className={classes.tab}>
 					<Link to='/signup' className={classes.link}>
