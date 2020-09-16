@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import NavigationTabs from '../NavigationTabs/NavigationTabs';
-import { Grid } from '@material-ui/core';
+import { Grid, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import WOW from 'wowjs';
 import Typed from 'react-typed';
@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
 		paddingTop: theme.spacing(4),
 		fontFamily: 'Audiowide, cursive',
 		fontSize: '2rem',
-		zIndex: 1
+		zIndex: 1,
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.5rem'
+		}
 	},
 	logoContainer: {
 		display: 'flex',
@@ -30,10 +33,19 @@ const useStyles = makeStyles((theme) => ({
 	},
 	logo: {
 		width: '50px',
-		height: '50px'
+		height: '50px',
+		[theme.breakpoints.down('sm')]: {
+			width: '30px',
+			height: '30px'
+		}
 	},
 	logoItem: {
 		paddingLeft: theme.spacing(1)
+	},
+	navigationTabs: {
+		[theme.breakpoints.down('sm')]: {
+			paddingTop: '1rem'
+		}
 	}
 }));
 
@@ -45,9 +57,17 @@ const Header: React.FC<IHeaderProps> = ({ user, setUser }) => {
 	}, []);
 
 	const classes = useStyles();
+	const theme = useTheme();
+	const isScreenSmall = useMediaQuery(theme.breakpoints.down('sm'));
+	const isScreenXSmall = useMediaQuery(theme.breakpoints.down('xs'));
 
 	return (
-		<Grid container justify='space-between' alignItems='center' className={classes.navBarContainer}>
+		<Grid
+			container
+			justify='space-between'
+			alignItems='center'
+			direction={isScreenSmall || isScreenXSmall ? 'column' : 'row'}
+			className={classes.navBarContainer}>
 			<Grid item className={classes.logoContainer}>
 				<Grid item>
 					<img
@@ -63,7 +83,7 @@ const Header: React.FC<IHeaderProps> = ({ user, setUser }) => {
 				</Grid>
 			</Grid>
 
-			<Grid item>
+			<Grid item className={classes.navigationTabs}>
 				<NavigationTabs user={user} setUser={setUser} />
 			</Grid>
 		</Grid>
