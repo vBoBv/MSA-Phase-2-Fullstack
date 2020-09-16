@@ -2,7 +2,9 @@ import axios, { AxiosResponse } from 'axios';
 import { IItem, IUser, IUserForm } from '../../common/Interfaces';
 
 axios.defaults.baseURL =
-	process.env.NODE_ENV === 'development' ? 'https://localhost:44379/api/' : 'https://aboveserver.database.windows.net/';
+	process.env.NODE_ENV === 'development'
+		? 'https://localhost:44379/api/'
+		: 'https://aboveserver.database.windows.net/api/';
 
 axios.interceptors.request.use(
 	(config) => {
