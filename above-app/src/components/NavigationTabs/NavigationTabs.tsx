@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Button } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Grid, Button, useMediaQuery } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { IUser } from '../../common/Interfaces';
 import history from '../history';
@@ -13,10 +13,25 @@ interface INavigationProps {
 
 const useStyles = makeStyles((theme) => ({
 	tabsContainer: {
-		width: 700
+		width: 700,
+		[theme.breakpoints.down('md')]: {
+			width: 400
+		},
+		[theme.breakpoints.down('sm')]: {
+			width: 350
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: 300
+		}
 	},
 	tab: {
-		fontSize: '1rem'
+		fontSize: '1rem',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1rem'
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1rem'
+		}
 	},
 	link: {
 		color: 'inherit',
@@ -29,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
 
 const NavigationTabs: React.FC<INavigationProps> = ({ user, setUser }) => {
 	const classes = useStyles();
+	const theme = useTheme();
+	const isScreenSmall = useMediaQuery(theme.breakpoints.down('sm'));
+	const isScreenXSmall = useMediaQuery(theme.breakpoints.down('xs'));
 
 	const logout = () => {
 		window.localStorage.setItem('jwt', null!);
@@ -41,7 +59,7 @@ const NavigationTabs: React.FC<INavigationProps> = ({ user, setUser }) => {
 			<Grid container justify='space-evenly' className={classes.tabsContainer}>
 				<Grid item className={classes.tab}>
 					<Link to='/' className={classes.link}>
-						<Trans>Home</Trans>
+						{isScreenSmall || isScreenXSmall ? null : <Trans>Home</Trans>}
 					</Link>
 				</Grid>
 				<Grid item className={classes.tab}>
