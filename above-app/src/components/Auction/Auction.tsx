@@ -77,48 +77,48 @@ const Auction = () => {
 	};
 
 	const renderAuctionItems = spaceObjects.map((spaceObject, i) => {
-		if (spaceObject.bids) {
-			return (
-				<Accordion
-					key={spaceObject.id}
-					className={classes.accordionContaienr}
-					expanded={expanded === `panel${i}`}
-					onChange={handleChange(`panel${i}`)}>
-					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-						<Grid container justify='space-between'>
-							<Grid item>
-								<Typography className={classes.heading}>{spaceObject.name}</Typography>
-							</Grid>
-							<Grid item>
-								<Typography className={classes.secondaryHeading}>Time</Typography>
-							</Grid>
-						</Grid>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Typography>{spaceObject.description}</Typography>
-					</AccordionDetails>
-					<Grid container direction='column' justify='center' alignContent='center'>
+		return (
+			<Accordion
+				key={spaceObject.id}
+				className={classes.accordionContaienr}
+				expanded={expanded === `panel${i}`}
+				onChange={handleChange(`panel${i}`)}>
+				<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+					<Grid container justify='space-between'>
 						<Grid item>
-							<Typography align='center' variant='subtitle1'>
-								Transaction History
-							</Typography>
-							{spaceObject.bids.map((bid) => {
-								return (
-									<Typography key={bid.name} align='center'>
-										$ {bid.price} - {bid.name}
-									</Typography>
-								);
-							})}
+							<Typography className={classes.heading}>{spaceObject.name}</Typography>
 						</Grid>
 						<Grid item>
-							<Button onClick={() => placeBid(spaceObject.id)} variant='outlined' className={classes.placeBid}>
-								Place Bid
-							</Button>
+							<Typography className={classes.secondaryHeading}>Time</Typography>
 						</Grid>
 					</Grid>
-				</Accordion>
-			);
-		}
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>{spaceObject.description}</Typography>
+				</AccordionDetails>
+				<Grid container direction='column' justify='center' alignContent='center'>
+					<Grid item>
+						<Typography align='center' variant='subtitle1'>
+							Transaction History
+						</Typography>
+						{spaceObject.bids
+							? spaceObject.bids.map((bid) => {
+									return (
+										<Typography key={bid.name} align='center'>
+											$ {bid.price} - {bid.name}
+										</Typography>
+									);
+							  })
+							: null}
+					</Grid>
+					<Grid item>
+						<Button onClick={() => placeBid(spaceObject.id)} variant='outlined' className={classes.placeBid}>
+							Place Bid
+						</Button>
+					</Grid>
+				</Grid>
+			</Accordion>
+		);
 	});
 
 	return (
