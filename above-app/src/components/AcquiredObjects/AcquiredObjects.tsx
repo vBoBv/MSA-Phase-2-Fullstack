@@ -18,6 +18,7 @@ import { IItem } from '../../common/Interfaces';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Particle from '../Particles/Particles';
 import { Trans } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	cardContainer: {
@@ -133,7 +134,9 @@ const AcquiredObjects = () => {
 				{renderobjects}
 				<Grid item container justify='center' className={classes.moreButton}>
 					<IconButton>
-						<MoreHorizIcon fontSize='large' className={classes.cardButton} />
+						<Link to='/spaceobjects'>
+							<MoreHorizIcon fontSize='large' className={classes.cardButton} />
+						</Link>
 					</IconButton>
 				</Grid>
 			</Grid>
