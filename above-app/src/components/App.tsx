@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './Header/Header';
@@ -38,7 +38,7 @@ import Footer from './Footer/Footer';
 
 const App = () => {
 	const SOCIAL_MEDIA_ICON_SIZE = 40;
-	const URL_TO_SHARE = 'https://www.google.com/';
+	const URL_TO_SHARE = 'https://aboveyou.azurewebsites.net/';
 	const POPUP_TITLE = 'Market for space objects';
 
 	const [user, setUser] = useState<IUser | null>(null);
@@ -115,11 +115,19 @@ const App = () => {
 					<Route exact path='/auction' component={Auction} />
 					<Route exact path='/joinus' render={(props) => <JoinUs {...props} setUser={setUser} />} />
 				</Switch>
-				<Grid container justify='center' alignContent='center' direction='column'>
+				<Grid container justify='center' alignContent='center' direction='column' className='footerContainer'>
 					<Grid item>
 						<Grid container justify='center'>
-							<Button onClick={() => changeLanguage('maori')}>Maori</Button>
-							<Button onClick={() => changeLanguage('english')}>English</Button>
+							<Grid item>
+								<Button onClick={() => changeLanguage('maori')} color='primary'>
+									Maori
+								</Button>
+							</Grid>
+							<Grid item>
+								<Button onClick={() => changeLanguage('english')} color='primary'>
+									English
+								</Button>
+							</Grid>
 						</Grid>
 					</Grid>
 					<Grid item>{renderSocialMediaShareButtons()}</Grid>

@@ -16,3 +16,18 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: rgb(20, 20, 20);
 }
+
+.footerContainer {
+	background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../assets/space.jpg');
+	/* background-image: url('../assets/space.jpg'); */
+
+	background-color: black;
+	background-size: cover;
+	background-position: top;
+	position: relative;
+}
+
+.translateButton {
+	margin: '1rem';
+	color: white;
+}
