@@ -11,7 +11,6 @@ import {
 	useMediaQuery
 } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import logo from '../../assets/edit.png';
 
 import Api from '../api/Api';
 import { IItem } from '../../common/Interfaces';
@@ -50,11 +49,13 @@ const useStyles = makeStyles((theme) => ({
 		maxHeight: '80%',
 		overflow: 'auto',
 		marginTop: theme.spacing(5),
-		[theme.breakpoints.down('md')]: {
-			top: '55%'
+		[theme.breakpoints.down('lg')]: {
+			maxHeight: '60%',
+			maxWidth: '60%'
 		},
 		[theme.breakpoints.down('sm')]: {
-			top: '50%'
+			maxHeight: '80%',
+			maxWidth: '80%'
 		}
 	},
 	acquiredTitle: {
@@ -124,11 +125,13 @@ const AcquiredObjects = () => {
 
 	return (
 		<Fragment>
-			<Grid container justify='center' className={classes.acquiredTitle}>
-				<Typography variant={isScreenMedium ? 'h5' : isScreenSmall || isScreenXSmall ? 'h6' : 'h4'}>
-					<Trans>Acquired Objects</Trans>
-				</Typography>
-			</Grid>
+			{objects.length > 4 ? null : (
+				<Grid container justify='center' className={classes.acquiredTitle}>
+					<Typography variant={isScreenMedium ? 'h5' : isScreenSmall || isScreenXSmall ? 'h6' : 'h4'}>
+						<Trans>Acquired Objects</Trans>
+					</Typography>
+				</Grid>
+			)}
 			<Grid
 				container
 				className={classes.objectsContainer}

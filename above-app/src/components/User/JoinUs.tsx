@@ -21,7 +21,16 @@ const useStyles = makeStyles((theme: Theme) =>
 			backgroundPosition: 'top',
 			position: 'relative',
 			height: '100vh',
-			color: 'white'
+			color: 'white',
+			[theme.breakpoints.down('lg')]: {
+				paddingTop: '10rem'
+			},
+			[theme.breakpoints.down('sm')]: {
+				paddingTop: '10rem'
+			},
+			[theme.breakpoints.down('xs')]: {
+				paddingTop: '7rem'
+			}
 		},
 		formContainer: {
 			padding: '2rem'

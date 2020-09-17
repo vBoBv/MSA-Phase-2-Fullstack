@@ -7,7 +7,6 @@ const images = [planet1, planet2, planet3, planet7];
 
 const getRandomImage = () => {
 	const RANGE = images.length;
-	console.log(RANGE);
 	return images[Math.floor(Math.random() * RANGE)];
 };
 

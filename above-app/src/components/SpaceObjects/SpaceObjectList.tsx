@@ -131,6 +131,9 @@ const SpaceObjectList = () => {
 			<Grid container justify='center' alignItems='center' direction='column'>
 				<Grid item className={classes.title}>
 					<Typography variant={isScreenSmall ? 'h6' : 'h4'}>Identified / Unidentified Flying Objects</Typography>
+					<Typography variant='body2' align='center'>
+						In case if there is no changes, please refresh the page!
+					</Typography>
 				</Grid>
 				<Grid item className={classes.addNew}>
 					<Link to='/spaceobjects/new'>
