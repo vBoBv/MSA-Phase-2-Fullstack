@@ -14,7 +14,6 @@ interface IJoinUsProps {
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		joinusContainer: {
-			width: '100%',
 			paddingTop: '10rem',
 			backgroundImage: `url(${backgroundImage})`,
 			backgroundSize: 'cover',
@@ -22,11 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
 			position: 'relative',
 			height: '100vh',
 			color: 'white'
-		},
-		form: {
-			backgroundImage: 'linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1))',
-			borderLeft: '3px solid white',
-			borderRight: '3px solid white'
 		},
 		formContainer: {
 			padding: '2rem'
@@ -44,7 +38,7 @@ const JoinUs: React.FC<IJoinUsProps> = ({ setUser }) => {
 					Come on board
 				</Typography>
 			</Grid>
-			<Grid container direction='row' justify='center' alignContent='center' className={classes.form}>
+			<Grid container direction='row' justify='center' alignContent='center'>
 				<Grid item className={classes.formContainer}>
 					<Grid container justify='center' direction='column' alignContent='center'>
 						<Grid item>
