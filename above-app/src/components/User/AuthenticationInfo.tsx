@@ -95,6 +95,7 @@ const AuthenticationInfo = () => {
 							{renderInfo1()}
 							{renderInfo2()}
 							{renderInfo3()}
+							{renderSampleAccountText()}
 						</React.Fragment>
 					)}
 				</Grid>
