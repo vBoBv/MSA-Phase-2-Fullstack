@@ -6,6 +6,7 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import { IUser } from '../../common/Interfaces';
 import backgroundImage from '../../assets/spaceObjects.jpg';
+import AuthenticationInfo from './AuthenticationInfo';
 
 interface IJoinUsProps {
 	setUser: (user: IUser) => void;
@@ -62,6 +63,7 @@ const JoinUs: React.FC<IJoinUsProps> = ({ setUser }) => {
 					</Grid>
 				</Grid>
 			</Grid>
+			<AuthenticationInfo />
 		</div>
 	);
 };
