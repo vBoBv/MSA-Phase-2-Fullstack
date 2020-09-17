@@ -11,7 +11,7 @@ import {
 	useMediaQuery
 } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/edit.png';
 
 import Api from '../api/Api';
 import { IItem } from '../../common/Interfaces';
@@ -19,6 +19,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Particle from '../Particles/Particles';
 import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import getRandomImage from '../utils/getRandomImage';
 
 const useStyles = makeStyles((theme) => ({
 	cardContainer: {
@@ -74,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	moreButton: {
 		color: 'inherit'
+	},
+	image: {
+		marginBottom: '0.5rem'
 	}
 }));
 
@@ -100,8 +104,9 @@ const AcquiredObjects = () => {
 							component='img'
 							alt={object.name}
 							// height='140'
-							image={logo}
+							image={getRandomImage()}
 							title={object.name}
+							className={classes.image}
 						/>
 						<CardContent className={classes.cardItem}>
 							<Typography gutterBottom variant='h5' component='h2' align='center'>
