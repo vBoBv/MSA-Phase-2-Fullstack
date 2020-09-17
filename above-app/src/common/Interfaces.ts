@@ -4,6 +4,15 @@ export interface IItem {
 	description: string;
 	possession: string;
 	bids?: IBid[];
+	discussions?: IDiscussion[];
+}
+
+export interface IDiscussion {
+	id: string;
+	username: string;
+	name: string;
+	comment: string;
+	createAt: Date;
 }
 
 export interface IUser {

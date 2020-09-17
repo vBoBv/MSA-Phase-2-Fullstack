@@ -6,6 +6,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { RouteComponentProps } from 'react-router-dom';
 import backgroundImage from '../../assets/spaceObjects.jpg';
 import logo from '../../assets/logo.png';
+// import { HubConnectionBuilder, LogLevel, HubConnection } from '@microsoft/signalr';
+// import SpaceObjectShowComment from './SpaceObjectShowComment';
 
 interface IRouteComponentMatchParamProps {
 	id: string;
@@ -62,6 +64,53 @@ const SpaceObjectShow: React.FC<RouteComponentProps<IRouteComponentMatchParamPro
 		});
 	}, [match.params.id]);
 
+	// const token = window.localStorage.getItem('jwt');
+	// const [hubConnection, setHubConnection] = useState<HubConnection>();
+
+	// const addComment = async (values: any) => {
+	// 	values.itemId = spaceObject.id;
+	// 	try {
+	// 		await hubConnection?.invoke('SendComment', values);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
+
+	// useEffect(() => {
+	// 	const createHubConnection = async () => {
+	// 		const connection = new HubConnectionBuilder()
+	// 			.withUrl('https://localhost:44379/chat', {
+	// 				accessTokenFactory: () => token!
+	// 			})
+	// 			.configureLogging(LogLevel.Information)
+	// 			.withAutomaticReconnect()
+	// 			.build();
+	// 		try {
+	// 			connection.on('NewUserConnected', (clientIp: string) => {
+	// 				console.log('New user joined the session - IP: ' + clientIp);
+	// 			});
+
+	// 			await connection.start();
+	// 			console.log('Successfully connected to signalR hub.');
+	// 		} catch (error) {
+	// 			console.log('Error establishing connection to signalR hub: ' + { error });
+	// 		}
+
+	// 		connection.on('ReceiveComment', (comment) => {
+	// 			spaceObject.discussions?.push(comment);
+	// 		});
+
+	// 		setHubConnection(connection);
+	// 	};
+	// 	createHubConnection();
+	// 	return () => {
+	// 		const stopHubConnection = () => {
+	// 			hubConnection?.stop();
+	// 		};
+	// 		stopHubConnection();
+	// 	};
+	// }, []);
+
 	return (
 		<div className={classes.spaceShowContainer}>
 			<Grid container justify='center'>
@@ -90,6 +139,7 @@ const SpaceObjectShow: React.FC<RouteComponentProps<IRouteComponentMatchParamPro
 					</Grid>
 				</Grid>
 			</Grid>
+			{/* <SpaceObjectShowComment spaceObject={spaceObject} addComment={addComment} /> */}
 		</div>
 	);
 };
