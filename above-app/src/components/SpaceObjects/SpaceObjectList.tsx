@@ -16,7 +16,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { IItem } from '../../common/Interfaces';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import backgroundImage from '../../assets/spaceObjects.jpg';
-import logo from '../../assets/logo.png';
+import getRandomImage from '../utils/getRandomImage';
 import Api from '../api/Api';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,7 +95,7 @@ const SpaceObjectList = () => {
 							component='img'
 							alt={spaceObject.name}
 							// height='140'
-							image={logo}
+							image={getRandomImage()}
 							title={spaceObject.name}
 						/>
 						<CardContent className={classes.cardItem}>
